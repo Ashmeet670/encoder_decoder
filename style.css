@@ -3,20 +3,18 @@
     padding: 0;
 }
 
-
-
 .bgMain{
-    background-color: #a6deff;
+    background-color: #002f62;
 }
 
 .bgTextBox{
     border: none !important;
-    background-color: #bae7ff !important;
-    color: #1da6d8 !important;
+    background-color: #003873 !important;
+    color: #006fe5 !important;
 }
 
 ::placeholder{
-    color: #87b3d3 !important;
+    color: #2073cd !important;
 }
 
 .fontTitle{
@@ -28,3 +26,20 @@
     transform: scale(1.04);
 }
 
+.submitBtn{
+    background-color: #003e80;
+    color: #74b7ff !important;
+    border: none;
+    transition: 0.2s;
+}
+
+.submitBtn:hover{
+    scale: 1.1;
+}
+
+.submitBtnDis{
+    background-color: #0e447d;
+    color: #6195cd !important;
+    border: none;
+    transition: 0.2s;
+}

@@ -67,6 +67,7 @@ generateConversionMap()
 var encryptedString = ""
 function convertString(){
   document.getElementById("submitTextButton").disabled = true
+  document.getElementById("submitTextButton").classList = "submitBtnDis p-2 px-4 rounded-4 fs-6 shadow"
   const text = document.getElementById("textToEncrypt").value
   const originalString = text
 
