@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.bgMain{
+    background-color: #a6deff;
+}
+
+.bgTextBox{
+    border: none !important;
+    background-color: #bae7ff !important;
+    color: #1da6d8 !important;
+}
+
+::placeholder{
+    color: #87b3d3 !important;
+}
+
+.fontTitle{
+    font-size: 5em;
+}
+
+.hover:hover{
+    transition: 0.3s;
+    transform: scale(1.04);
+}
+
