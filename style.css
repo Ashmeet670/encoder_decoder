@@ -1,43 +1,47 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.bgMain{
+.bgMain {
     background-color: #002f62;
 }
 
-.bgTextBox{
+body {
+    background-color: #00b7ff;
+}
+
+.bgTextBox {
     border: none !important;
     background-color: #003873 !important;
     color: #006fe5 !important;
 }
 
-::placeholder{
+::placeholder {
     color: #2073cd !important;
 }
 
-.fontTitle{
+.fontTitle {
     font-size: 5em;
 }
 
-.hover:hover{
+.hover:hover {
     transition: 0.3s;
     transform: scale(1.04);
 }
 
-.submitBtn{
+.submitBtn {
     background-color: #003e80;
     color: #74b7ff !important;
     border: none;
     transition: 0.2s;
 }
 
-.submitBtn:hover{
+.submitBtn:hover {
     scale: 1.1;
 }
 
-.submitBtnDis{
+.submitBtnDis {
     background-color: #0e447d;
     color: #6195cd !important;
     border: none;
