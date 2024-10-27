@@ -1,26 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js"
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyA8WXGcIrGbX9WF_rpCB7P9NfajJACvWKI",
-  authDomain: "encoder-decoder-877ac.firebaseapp.com",
-  projectId: "encoder-decoder-877ac",
-  storageBucket: "encoder-decoder-877ac.appspot.com",
-  messagingSenderId: "920355084103",
-  appId: "1:920355084103:web:83eef2a42336995b291e62",
-  measurementId: "G-WK0Z95P71Y"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
 const lowercaseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 const uppercaseAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -30,6 +7,16 @@ const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', " "];
 const symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '[', ']', '{', '}', ';', ':', "'", '"', ',', '.', '/', '?', '<', '>', '|', "\\", '`', '~'];
 
 // Combining all into a single list
+// const allAlphabets = [
+//   ...lowercaseAlphabet,
+//   ...uppercaseAlphabet,
+  
+// ];
+// const allSymboles = [
+//   ...numbers,
+//   ...symbols
+// ];
+
 const allCharacters = [
   ...lowercaseAlphabet,
   ...uppercaseAlphabet,
@@ -37,11 +24,32 @@ const allCharacters = [
   ...symbols
 ];
 
-
-
-
-const conversionMap = new Map() //so that this map can be accessed anywhere at a global scope
+const conversionMap = new Map()
 function generateConversionMap() {
+
+  // var reserveAlphabets = [
+  //   ...lowercaseAlphabet,
+  //   ...uppercaseAlphabet,
+    
+  // ];
+  // var reserveSymboles = [
+  //   ...numbers,
+  //   ...symbols
+  // ];
+
+  // for (var i = 0; i < allAlphabets.length; i++) {
+  //   var index = Math.floor(Math.random() * reserveAlphabets.length)
+  //   conversionMap.set(allAlphabets[i], reserveAlphabets[index])
+  //   var x = reserveAlphabets.splice(index, 1)
+  // }
+
+  // for (var i = 0; i < allSymboles.length; i++) {
+  //   var index = Math.floor(Math.random() * reserveSymboles.length)
+  //   conversionMap.set(allSymboles[i], reserveSymboles[index])
+  //   var x = reserveSymboles.splice(index, 1)
+  // }
+
+
 
   var reserveCharacters = [
     ...lowercaseAlphabet,
@@ -55,45 +63,57 @@ function generateConversionMap() {
     conversionMap.set(allCharacters[i],reserveCharacters[index])
     var x = reserveCharacters.splice(index,1)
   }
-  
   console.log(conversionMap)
 
 }
-
 generateConversionMap()
 
 
+mode = "encrypt"
+
+
+function selectMode(modeToBeSelected) {
+  document.getElementById(modeToBeSelected + "Select").classList.add("functionTabSelected")
+  document.getElementById(mode + "Select").classList.remove("functionTabSelected")
+
+  mode = modeToBeSelected
+
+}
+
+function buttonClick(btn) {
+  btn.classList.add('buttonClick')
+  setTimeout(() => {
+      btn.classList.remove('buttonClick')
+  }, 400);
+}
 
 var encryptedString = ""
-function convertString(){
-  document.getElementById("submitTextButton").disabled = true
-  document.getElementById("submitTextButton").classList = "submitBtnDis p-2 px-4 rounded-4 fs-6 shadow"
+function encryptString() {
+
   const text = document.getElementById("textToEncrypt").value
   const originalString = text
 
-
-  for (var i = 0; i < originalString.length; i++){
-    var char = originalString[i]
-    encryptedString = encryptedString + conversionMap.get(char)
-
+  for (var i = 0; i < originalString.length; i++) {
+    encryptedString = encryptedString + conversionMap.get(originalString[i])
   }
 
+  document.getElementById("outputDiv").classList.remove("d-none")
+  document.getElementById("outputArea").innerText = encryptedString
   console.log(encryptedString)
 }
-window.convertString = convertString
 
 
-Map.prototype.getKey = function(targetValue, map){
+Map.prototype.getKey = function (targetValue, map) {
   for (const [key, value] of map) {
-    if(value === targetValue)
+    if (value === targetValue)
       return key;
   }
 }
 
 
 var decryptedString = ""
-function decryptString(){
-  for (var i = 0; i < encryptedString.length; i++){
+function decryptString() {
+  for (var i = 0; i < encryptedString.length; i++) {
     var char = encryptedString[i]
     decryptedString = decryptedString + conversionMap.getKey(char, conversionMap)
 
