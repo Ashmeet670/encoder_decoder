@@ -10,7 +10,7 @@ const symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+'
 // const allAlphabets = [
 //   ...lowercaseAlphabet,
 //   ...uppercaseAlphabet,
-  
+
 // ];
 // const allSymboles = [
 //   ...numbers,
@@ -30,7 +30,7 @@ function generateConversionMap() {
   // var reserveAlphabets = [
   //   ...lowercaseAlphabet,
   //   ...uppercaseAlphabet,
-    
+
   // ];
   // var reserveSymboles = [
   //   ...numbers,
@@ -58,10 +58,10 @@ function generateConversionMap() {
     ...symbols
   ];
 
-  for (var i = 0; i < allCharacters.length; i++){
+  for (var i = 0; i < allCharacters.length; i++) {
     var index = Math.floor(Math.random() * reserveCharacters.length)
-    conversionMap.set(allCharacters[i],reserveCharacters[index])
-    var x = reserveCharacters.splice(index,1)
+    conversionMap.set(allCharacters[i], reserveCharacters[index])
+    var x = reserveCharacters.splice(index, 1)
   }
   console.log(conversionMap)
 
@@ -83,7 +83,7 @@ function selectMode(modeToBeSelected) {
 function buttonClick(btn) {
   btn.classList.add('buttonClick')
   setTimeout(() => {
-      btn.classList.remove('buttonClick')
+    btn.classList.remove('buttonClick')
   }, 400);
 }
 
@@ -93,13 +93,19 @@ function encryptString() {
   const text = document.getElementById("textToEncrypt").value
   const originalString = text
 
-  for (var i = 0; i < originalString.length; i++) {
-    encryptedString = encryptedString + conversionMap.get(originalString[i])
+  if (text != "") {
+    for (var i = 0; i < originalString.length; i++) {
+      encryptedString = encryptedString + conversionMap.get(originalString[i])
+    }
+
+    document.getElementById("outputDiv").classList.remove("d-none")
+    document.getElementById("outputArea").innerText = encryptedString
+    console.log(encryptedString)
+  }
+  else{
+    document.getElementById("textToEncrypt").placeholder = "Enter some text first!!!"
   }
 
-  document.getElementById("outputDiv").classList.remove("d-none")
-  document.getElementById("outputArea").innerText = encryptedString
-  console.log(encryptedString)
 }
 
 

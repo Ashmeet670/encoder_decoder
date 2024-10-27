@@ -66,6 +66,10 @@ body {
     aspect-ratio: 1/0.3;
     resize: none;
     font-size: 18px;
+}
+
+#textToEncrypt::placeholder {
+    color: #505b71;
 
 }
 
