@@ -28,52 +28,81 @@
 
 
 
-    <body class="bgMain">
+    <body>
 
-        <div class="container my-5">
+        <div class="title text-center py-3">Encoder-Decoder</div>
+
+        <div class="d-flex justify-content-center functionBar">
+            <text id="encryptSelect" class="functionTab pt-2 pb-1 mx-5 functionTabSelected"
+                onclick="selectMode('encrypt')">Encrypt</text>
+            <text id="decryptSelect" class="functionTab pt-2 pb-1 mx-5" onclick="selectMode('decrypt')">Decrypt</text>
+        </div>
+
+
+        <div class="container px-4 mt-5">
             <div class="row">
-                <h1 class="fontTitle text-center text-white">.</h1>
+
+                <div class="col-10">
+                    <textarea name="" id="textToEncrypt" class="rounded-1 p-2"></textarea>
+                </div>
+                <div class="col-2 text-center d-flex flex-column">
+                    <div class="button py-2 rounded-2 mt-auto mb-2" onclick="buttonClick(this); encryptString()">Encrypt</div>
+                </div>
+
             </div>
         </div>
 
-        <div class="container my-5">
+        <div id="outputDiv" class="container px-4 mt-5 d-none">
 
-            <div class="row justify-content-center ">
+            <div class="title2 my-3">Encrypted Text</div>
 
-                <!-- Encryption text -->
-                <div class="my-3 col-10">
-                    <textarea type="text" class="form-control form-control-lg bgTextBox shadow fs-4" id="textToEncrypt"
-                        placeholder="Enter the text you want to encrypt" required></textarea>
+
+            <div class="row">
+
+                <div class="col-9 ">
+                    <div id="outputArea" class="rounded-1 p-2 outputArea"></div>
+                </div>
+                <div class="col-3 text-center d-flex flex-column">
+
+
+                    <div class="button downloadConverstionKey py-2 rounded-2 mt-auto mb-2" onclick="buttonClick(this)">
+                        Copy
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" fill="currentColor" class="bi bi-copy mx-1"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" stroke="currentColor" stroke-width="0.5"
+                                d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
+                        </svg>
+                    </div>
+
+
+                    <div class="button downloadConverstionKey py-2 rounded-2 mb-2" onclick="buttonClick(this)">
+                        Conversion Key
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" fill="currentColor"
+                            class="bi bi-download mx-1" viewBox="0 0 16 16">
+                            <path
+                                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                            <path
+                                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                        </svg>
+                    </div>
+
+
                 </div>
 
             </div>
 
-            <div class="row justify-content-center ">
-
-                <!-- submit button -->
-                <div class="my-3 col-6 text-center">
-                    <button id="submitTextButton" class="submitBtn p-2 px-4 rounded-4 fs-6 shadow" onclick="convertString()" >Encrypt!</button>
-                </div>
-
-            </div>
-
-            <div class="row justify-content-center ">
-
-                <!--result-->
-                <div class="my-3  col-6">
-
-                </div>
-
-            </div>
-
+            <div style="height: 100px;"></div>
         </div>
+
     </body>
 
 
 
 
 
-    <script type="module" src="app.js"></script>
+    <script src="app.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
