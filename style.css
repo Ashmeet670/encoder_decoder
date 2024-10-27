@@ -1,46 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
-.bgMain {
-    background-color: #002f62;
+body {
+    background-color: #0b2c46;
+    color: #a7c4ff;
+    font-family: "Sono", monospace;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-
-.bgTextBox {
-    border: none !important;
-    background-color: #003873 !important;
-    color: #006fe5 !important;
+::-webkit-scrollbar {
+    width: 4px;
 }
 
-::placeholder {
-    color: #2073cd !important;
+::-webkit-scrollbar-thumb {
+    border-radius: 200px;
+    background-color: #e44728e9;
 }
 
-.fontTitle {
-    font-size: 5em;
+.title {
+    background-color: #001937;
+    font-size: clamp(25px, 10vw, 35px);
+    font-family: "Audiowide", serif;
+
 }
 
-.hover:hover {
-    transition: 0.3s;
-    transform: scale(1.04);
+.title2{
+    font-size: clamp(20px, 8vw, 30px);
+    font-family: "Audiowide", serif;
 }
 
-.submitBtn {
-    background-color: #003e80;
-    color: #74b7ff !important;
+.functionBar {
+    background-color: #002149;
+    box-shadow: 0px 4px 4px #001636;
+}
+
+.functionTab {
+    font-size: clamp(10px, 3vw, 20px);
+    cursor: pointer;
+}
+
+.functionTabSelected {
+    border-bottom: 2px solid #a7c4ff;
+}
+
+.outputArea{
+    color: #8fa7d9;
+    background-color: #001937;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/0.3;
+}
+
+#textToEncrypt {
+    color: #8fa7d9;
+    width: 100%;
+    height: 100%;
+    background-color: #001937;
     border: none;
-    transition: 0.2s;
+    aspect-ratio: 1/0.3;
+    resize: none;
+    font-size: 18px;
+
 }
 
-.submitBtn:hover {
-    scale: 1.1;
+#textToEncrypt::-webkit-scrollbar {
+    width: 4px;
 }
 
-.submitBtnDis {
-    background-color: #0e447d;
-    color: #6195cd !important;
-    border: none;
-    transition: 0.2s;
+#textToEncrypt::-webkit-scrollbar-thumb {
+    border-radius: 200px;
+    background-color: #e44728e9;
 }
+
+#textToEncrypt:focus {
+    outline: none !important;
+}
+
+.button {
+    color: #001937;
+    background-color: #e44728;
+    font-family: "Audiowide", serif;
+    width: 80%;
+    font-size: clamp(10px, 2vw, 18px);
+    cursor: pointer;
+}
+
+.buttonClick{
+    animation: buttonClick 0.3s 0s forwards;
+}
+@keyframes buttonClick {
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 0.8;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+.downloadConverstionKey{
+    font-size: clamp(10px, 2vw, 16px);
+}
+
