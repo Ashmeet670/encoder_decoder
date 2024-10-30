@@ -1,4 +1,3 @@
-
 const lowercaseAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 const uppercaseAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -78,6 +77,9 @@ function selectMode(modeToBeSelected) {
   document.getElementById(mode + "Select").classList.remove("functionTabSelected")
 
   mode = modeToBeSelected
+  document.getElementById("convertButton").innerText = mode[0].toUpperCase() + mode.slice(1);
+  document.getElementById("textInput").placeholder = "Enter text to "+mode
+  document.getElementById("outputTitle").innerText = mode[0].toUpperCase() + mode.slice(1)+"ed Text";
 
 }
 
@@ -88,30 +90,6 @@ function buttonClick(btn) {
   }, 400);
 }
 
-
-
-var encryptedString = ""
-function encryptString() {
-  encryptedString = ""
-  const text = document.getElementById("textToEncrypt").value
-  const originalString = text
-
-  if (text != "") {
-    for (var i = 0; i < originalString.length; i++) {
-      encryptedString = encryptedString + conversionMap.get(originalString[i])
-    }
-
-    document.getElementById("outputDiv").classList.remove("d-none")
-    document.getElementById("outputArea").innerText = encryptedString
-    console.log(encryptedString)
-  }
-  else {
-    document.getElementById("textToEncrypt").placeholder = "Enter some text first!!!"
-  }
-
-}
-
-
 Map.prototype.getKey = function (targetValue, map) {
   for (const [key, value] of map) {
     if (value === targetValue)
@@ -119,16 +97,41 @@ Map.prototype.getKey = function (targetValue, map) {
   }
 }
 
-
+var encryptedString = ""
 var decryptedString = ""
-function decryptString() {
-  for (var i = 0; i < encryptedString.length; i++) {
-    var char = encryptedString[i]
-    decryptedString = decryptedString + conversionMap.getKey(char, conversionMap)
+
+function convertString() {
+  const text = document.getElementById("textInput").value
+
+  if (mode == "encrypt") {
+    encryptedString = ""
+    const originalString = text
+
+    if (text != "") {
+      for (var i = 0; i < originalString.length; i++) {
+        encryptedString = encryptedString + conversionMap.get(originalString[i])
+      }
+
+      document.getElementById("outputDiv").classList.remove("d-none")
+      document.getElementById("outputArea").innerText = encryptedString
+      console.log(encryptedString)
+    }
+    else {
+      document.getElementById("textInput").placeholder = "Enter some text first!!!"
+    }
+
 
   }
-  console.log(decryptedString)
+  else if (mode == "decrypt") {
 
+    decryptedString = ""
+    for (var i = 0; i < text.length; i++) {
+      var char = text[i]
+      decryptedString = decryptedString + conversionMap.getKey(char, conversionMap)
+
+    }
+    console.log(decryptedString)
+  }
 }
 
 alertShown = false
