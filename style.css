@@ -1,14 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
+:root{
+    --primary: #0b2c46;
+    --secondary: #001937;
+    --functionBar: #002149;
+    --primaryText: #a7c4ff;
+    --accent: #e44728fb;
+    --copiedCard: #37aa1b;
+
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #0b2c46;
-    color: #a7c4ff;
+    background-color: var(--primary);
+    color: var(--primaryText);
     font-family: "Sono", monospace;
     user-select: none;
     -webkit-user-select: none;
@@ -20,11 +30,11 @@ body {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 200px;
-    background-color: #e44728e9;
+    background-color: var(--accent);
 }
 
 .title {
-    background-color: #001937;
+    background-color: var(--secondary);
     font-size: clamp(25px, 10vw, 35px);
     font-family: "Audiowide", serif;
 
@@ -36,7 +46,7 @@ body {
 }
 
 .functionBar {
-    background-color: #002149;
+    background-color: var(--functionBar);
     box-shadow: 0px 4px 4px #001636;
 }
 
@@ -46,15 +56,15 @@ body {
 }
 
 .functionTabSelected {
-    border-bottom: 2px solid #a7c4ff;
+    border-bottom: 2px solid var(--primaryText);
 }
 
 .outputArea{
     color: #8fa7d9;
-    background-color: #001937;
+    background-color: var(--secondary);
     width: 100%;
-    height: 100%;
-    aspect-ratio: 1/0.3;
+    height: fit-content;
+    min-height: 200px;
     user-select: auto;
     -webkit-user-select: auto;
 }
@@ -63,7 +73,7 @@ body {
     color: #8fa7d9;
     width: 100%;
     height: 100%;
-    background-color: #001937;
+    background-color: var(--secondary);
     border: none;
     aspect-ratio: 1/0.3;
     resize: none;
@@ -81,7 +91,7 @@ body {
 
 #textInput::-webkit-scrollbar-thumb {
     border-radius: 200px;
-    background-color: #e44728e9;
+    background-color: var(--accent);
 }
 
 #textInput:focus {
@@ -89,8 +99,8 @@ body {
 }
 
 .button {
-    color: #001937;
-    background-color: #e44728;
+    color: var(--secondary);
+    background-color: var(--accent);
     font-family: "Audiowide", serif;
     width: 80%;
     font-size: clamp(15px, 2vw, 18px);
@@ -120,9 +130,9 @@ body {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    background-color: #37aa1b;
+    background-color: var(--copiedCard);
     width: fit-content;
-    color: #001937;
+    color: var(--secondary);
     font-size: clamp(14px, 2vw, 14px);
     animation: fade-in-down 0.8s 0s forwards;
 

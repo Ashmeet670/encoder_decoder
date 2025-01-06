@@ -69,17 +69,36 @@ function generateConversionMap() {
 generateConversionMap()
 
 
+inputText = {
+  "encrypt": "",
+  "decrypt": "",
+}
+
+outputText = {
+  "encrypt": "",
+  "decrypt": "",
+}
+
 mode = "encrypt"
 
-
 function selectMode(modeToBeSelected) {
+
+  document.getElementById("outputDiv").classList.remove("d-none")//show output box so can hide later
+
   document.getElementById(modeToBeSelected + "Select").classList.add("functionTabSelected")
   document.getElementById(mode + "Select").classList.remove("functionTabSelected")
+  inputText[mode] = document.getElementById("textInput").value //save current input text showing
+  outputText[mode] = document.getElementById("outputArea").innerText //save current output text showing
 
-  mode = modeToBeSelected
-  document.getElementById("convertButton").innerText = mode[0].toUpperCase() + mode.slice(1);
-  document.getElementById("textInput").placeholder = "Enter text to "+mode
-  document.getElementById("outputTitle").innerText = mode[0].toUpperCase() + mode.slice(1)+"ed Text";
+  mode = modeToBeSelected // change the mode
+
+  mode == "decrypt" && outputText[mode] == "" ? document.getElementById("outputDiv").classList.add("d-none") : null //hide output box is decrupt text == nothing
+  mode == "encrypt" && outputText[mode] == "" ? document.getElementById("outputDiv").classList.add("d-none") : null //hide output box is encrypt text == nothing
+  document.getElementById("convertButton").innerText = mode[0].toUpperCase() + mode.slice(1); // convertbutton text change
+  document.getElementById("textInput").placeholder = "Enter text to " + mode //input placeholder
+  document.getElementById("textInput").value = inputText[mode] //show last input text showing
+  document.getElementById("outputArea").innerText = outputText[mode] //show last output text showing
+  document.getElementById("outputTitle").innerText = mode[0].toUpperCase() + mode.slice(1) + "ed Text"; // output box title
 
 }
 
