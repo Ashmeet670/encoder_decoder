@@ -24,6 +24,7 @@ const allCharacters = [
   ...symbols
 ];
 
+
 const conversionMap = new Map()
 function generateConversionMap() {
 
@@ -63,11 +64,64 @@ function generateConversionMap() {
     conversionMap.set(allCharacters[i], reserveCharacters[index])
     var x = reserveCharacters.splice(index, 1)
   }
+  conversionMap.set("\n", "\n")
   console.log(conversionMap)
 
 }
 generateConversionMap()
 
+
+var textFile = null,
+  makeTextFile = function (text) {
+    var data = new Blob([JSON.stringify(Object.fromEntries(text))], { type: 'text/plain' }); //convert the map into an object then into json string and save it as a blob
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data); //text link for the file
+
+    // returns a URL you can use as a href
+    return textFile; 
+  };
+
+
+function downloadKey() {
+
+  var link = document.createElement("a");
+  link.setAttribute('download', "conversion_key");
+
+  link.href = makeTextFile(conversionMap); //make the text file of the map
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+
+const decryptionMap = new Map()
+
+function e() {
+
+  const [file] = document.querySelector("input[type=file]").files; //get file from the input
+  r = new FileReader();
+  if (file) {
+    r.readAsText(file);
+  }
+  r.addEventListener("load",() => { //after file is read then this run
+
+      obj = JSON.parse(r.result) //convert json string to a obj 
+      for (i in obj) {
+        decryptionMap.set(obj[i],i) //coded to normal so ulta
+        conversionMap.set(i, obj[i]) //normal to coded
+      }
+    },
+    false,
+  ) 
+
+
+}
 
 inputText = {
   "encrypt": "",
@@ -133,7 +187,6 @@ function convertString() {
 
       document.getElementById("outputDiv").classList.remove("d-none")
       document.getElementById("outputArea").innerText = encryptedString
-      console.log(encryptedString)
     }
     else {
       document.getElementById("textInput").placeholder = "Enter some text first!!!"
@@ -150,6 +203,8 @@ function convertString() {
 
     }
     console.log(decryptedString)
+    document.getElementById("outputDiv").classList.remove("d-none")
+    document.getElementById("outputArea").innerText = decryptedString
   }
 }
 
