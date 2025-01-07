@@ -209,7 +209,7 @@ function convertString() {
 alertShown = false
 function copyToClipboard() {
 
-  navigator.clipboard.writeText(encryptedString).then(
+  navigator.clipboard.writeText(document.getElementById("outputArea").innerText).then(
     (e) => {
       if (!alertShown) {
         document.getElementById("alertContaingBox").insertAdjacentHTML("beforeend",
