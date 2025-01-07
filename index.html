@@ -64,6 +64,7 @@
             </div>
         </div>
 
+        <input id="decryptionKey" type="file" name="e" onchange="e()" id="">
 
         <!-- output -->
         <div id="outputDiv" class="container px-4 mt-5 d-none">
@@ -91,7 +92,7 @@
                     </div>
 
 
-                    <div  class="button downloadConverstionKey py-2 rounded-2 mb-2" onclick="buttonClick(this)">
+                    <div  id="downlaod" class="button downloadConverstionKey py-2 rounded-2 mb-2" onclick="buttonClick(this); downloadKey()">
                         Conversion Key
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" fill="currentColor"
