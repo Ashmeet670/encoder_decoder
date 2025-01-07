@@ -56,7 +56,10 @@
                         placeholder="Enter text to encrypt"></textarea>
                 </div>
                 <div class="col-2 text-center d-flex flex-column">
-                    <div id="convertButton" class="button py-2 rounded-2 mt-auto mb-2" onclick="buttonClick(this); convertString()">
+                    <div id="key" class="button py-2 rounded-2 mt-auto mb-2" onclick="buttonClick(this); uploadKey()">
+                        Upload Key
+                    </div>
+                    <div id="convertButton" class="button py-2 rounded-2 mb-2" onclick="buttonClick(this); convertString()">
                         Encrypt
                     </div>
                 </div>
@@ -64,7 +67,7 @@
             </div>
         </div>
 
-        <input id="decryptionKey" type="file" name="e" onchange="e()" id="">
+        <input class="d-none" id="decryptionKey" type="file" name="e" onchange="uploadedKeyToMap()" id="">
 
         <!-- output -->
         <div id="outputDiv" class="container px-4 mt-5 d-none">

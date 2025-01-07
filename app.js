@@ -71,21 +71,20 @@ function generateConversionMap() {
 generateConversionMap()
 
 
-var textFile = null,
-  makeTextFile = function (text) {
-    var data = new Blob([JSON.stringify(Object.fromEntries(text))], { type: 'text/plain' }); //convert the map into an object then into json string and save it as a blob
-    // If we are replacing a previously generated file we need to
-    // manually revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-      window.URL.revokeObjectURL(textFile);
-    }
+var textFile = null
+function makeTextFile(text) {
+  var data = new Blob([JSON.stringify(Object.fromEntries(text))], { type: 'text/plain' }); //convert the map into an object then into json string and save it as a blob
+  // If we are replacing a previously generated file we need to
+  // manually revoke the object URL to avoid memory leaks.
+  if (textFile !== null) {
+    window.URL.revokeObjectURL(textFile);
+  }
 
-    textFile = window.URL.createObjectURL(data); //text link for the file
+  textFile = window.URL.createObjectURL(data); //text link for the file
 
-    // returns a URL you can use as a href
-    return textFile; 
-  };
-
+  // returns a URL you can use as a href
+  return textFile;
+};
 
 function downloadKey() {
 
@@ -100,25 +99,26 @@ function downloadKey() {
 }
 
 
-const decryptionMap = new Map()
+function uploadKey() {
+  document.getElementById("decryptionKey").click()
+}
 
-function e() {
+function uploadedKeyToMap() {
 
-  const [file] = document.querySelector("input[type=file]").files; //get file from the input
+  const [file] = document.getElementById("decryptionKey").files; //get file from the input
   r = new FileReader();
   if (file) {
     r.readAsText(file);
   }
-  r.addEventListener("load",() => { //after file is read then this run
+  r.addEventListener("load", () => { //after file is read then this run
 
-      obj = JSON.parse(r.result) //convert json string to a obj 
-      for (i in obj) {
-        decryptionMap.set(obj[i],i) //coded to normal so ulta
-        conversionMap.set(i, obj[i]) //normal to coded
-      }
-    },
+    obj = JSON.parse(r.result) //convert json string to a obj 
+    for (i in obj) {
+      conversionMap.set(i, obj[i]) //normal to coded
+    }
+  },
     false,
-  ) 
+  )
 
 
 }
@@ -202,7 +202,6 @@ function convertString() {
       decryptedString = decryptedString + conversionMap.getKey(char, conversionMap)
 
     }
-    console.log(decryptedString)
     document.getElementById("outputDiv").classList.remove("d-none")
     document.getElementById("outputArea").innerText = decryptedString
   }
