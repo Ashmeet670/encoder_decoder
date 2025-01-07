@@ -100,7 +100,7 @@ function downloadKey() {
 
 
 function uploadKey() {
-  document.getElementById("decryptionKey").click()
+  document.getElementById("decryptionKey").click() //triggers the click function on file input
 }
 
 function uploadedKeyToMap() {
@@ -119,7 +119,6 @@ function uploadedKeyToMap() {
   },
     false,
   )
-
 
 }
 
