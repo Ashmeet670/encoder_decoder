@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-:root{
+:root {
     --primary: #0b2c46;
     --secondary: #001937;
     --functionBar: #002149;
     --primaryText: #a7c4ff;
-    --accent: #e44728fb;
+    --accent: #df3b1afb;
     --copiedCard: #37aa1b;
 
 }
@@ -40,7 +40,7 @@ body {
 
 }
 
-.title2{
+.title2 {
     font-size: clamp(20px, 8vw, 30px);
     font-family: "Audiowide", serif;
 }
@@ -59,7 +59,7 @@ body {
     border-bottom: 2px solid var(--primaryText);
 }
 
-.outputArea{
+.outputArea {
     color: #8fa7d9;
     background-color: var(--secondary);
     width: 100%;
@@ -102,31 +102,33 @@ body {
     color: var(--secondary);
     background-color: var(--accent);
     font-family: "Audiowide", serif;
-    width: 80%;
-    font-size: clamp(15px, 2vw, 18px);
+    font-size: clamp(15px, 3vw, 18px);
     cursor: pointer;
 }
 
-.buttonClick{
+.buttonClick {
     animation: buttonClick 0.3s 0s forwards;
 }
+
 @keyframes buttonClick {
-    0%{
+    0% {
         scale: 1;
     }
-    50%{
+
+    50% {
         scale: 0.8;
     }
-    100%{
+
+    100% {
         scale: 1;
     }
 }
 
-.downloadConverstionKey{
+.downloadConverstionKey {
     font-size: clamp(10px, 2vw, 16px);
 }
 
-.alertCardTextCopied{
+.alertCardTextCopied {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -139,31 +141,56 @@ body {
 }
 
 @keyframes fade-in-down {
-    0%{
+    0% {
         transform: translateX(300px);
         opacity: 0.3;
     }
 
-    100%{
+    100% {
         transform: translateX(0px);
         opacity: 1;
 
     }
 }
 
-.exitAnimation{
+.exitAnimation {
     animation: exitAnimation 0.4s 0s forwards;
 }
 
 @keyframes exitAnimation {
-    0%{
+    0% {
         transform: translateY(0px);
         opacity: 0.6;
     }
 
-    100%{
+    100% {
         transform: translateY(50px);
         opacity: 0.3;
 
+    }
+}
+
+
+
+/* sm */
+@media only screen and (max-width:576px) {
+    #textInput{
+        min-height: 225px;
+    }
+}
+
+
+/* md */
+@media only screen and (max-width:768px) {
+    .downloadConverstionKey {
+        font-size: clamp(14px, 4vw, 17px);
+    }
+}
+
+/* sm */
+@media only screen and (min-width:768px) {
+    .button {
+        width: 100%;
+        font-size: clamp(15px, 2vw, 18px);
     }
 }

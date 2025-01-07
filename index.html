@@ -48,18 +48,18 @@
         <!-- encryption -->
          
         <!-- input section -->
-        <div class="container px-4 mt-5">
+        <div class="container-xl px-4 mt-5">
             <div class="row">
 
-                <div class="col-10">
+                <div class="col-12 col-md-9 col-lg-10">
                     <textarea name="" id="textInput" class="rounded-1 p-2"
                         placeholder="Enter text to encrypt"></textarea>
                 </div>
-                <div class="col-2 text-center d-flex flex-column">
-                    <div id="key" class="button py-2 rounded-2 mt-auto mb-2" onclick="buttonClick(this); uploadKey()">
+                <div class="col-12 col-md-3 col-lg-2 text-center d-flex flex-md-column justify-content-evenly mt-3">
+                    <div id="key" class="button py-2 rounded-2 mt-auto mb-2 col-5 col-md-12" onclick="buttonClick(this); uploadKey()">
                         Upload Key
                     </div>
-                    <div id="convertButton" class="button py-2 rounded-2 mb-2" onclick="buttonClick(this); convertString()">
+                    <div id="convertButton" class="button py-2 rounded-2 mb-2 col-5 col-md-12" onclick="buttonClick(this); convertString()">
                         Encrypt
                     </div>
                 </div>
@@ -70,20 +70,21 @@
         <input class="d-none" id="decryptionKey" type="file" name="e" onchange="uploadedKeyToMap()" id="">
 
         <!-- output -->
-        <div id="outputDiv" class="container px-4 mt-5 d-none">
+        <div id="outputDiv" class="container-xl px-4 mt-5 d-none">
 
             <div id="outputTitle" class="title2 my-3">Encrypted Text</div>
 
 
             <div class="row">
 
-                <div class="col-9 ">
+                <div class="col-12 col-md-8 col-lg-9">
                     <div id="outputArea" class="rounded-1 p-2 outputArea"></div>
                 </div>
-                <div class="col-3 text-center d-flex flex-column">
+
+                <div class="col-12 col-md-4 col-lg-3 text-center d-flex flex-md-column justify-content-evenly mt-3">
 
 
-                    <div class="button downloadConverstionKey py-2 rounded-2 mt-auto mb-2"
+                    <div class="button downloadConverstionKey py-2 rounded-2 mt-auto mb-2 col-5 col-md-12 col-xl-10"
                         onclick="buttonClick(this); copyToClipboard()">
                         Copy
 
@@ -95,7 +96,7 @@
                     </div>
 
 
-                    <div  id="downlaod" class="button downloadConverstionKey py-2 rounded-2 mb-2" onclick="buttonClick(this); downloadKey()">
+                    <div  id="downlaod" class="button downloadConverstionKey py-2 rounded-2 mb-2 col-5 col-md-12 col-xl-10" onclick="buttonClick(this); downloadKey()">
                         Conversion Key
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" fill="currentColor"
