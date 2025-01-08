@@ -177,6 +177,18 @@ body {
     #textInput{
         min-height: 225px;
     }
+
+    .functionTab {
+        font-size: clamp(14px, 4vw, 22px);
+        cursor: pointer;
+    }
+
+    .title {
+        background-color: var(--secondary);
+        font-size: clamp(20px, 8vw, 35px);
+        font-family: "Audiowide", serif;
+    
+    }
 }
 
 
